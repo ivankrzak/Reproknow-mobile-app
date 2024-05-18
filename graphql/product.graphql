@@ -1,0 +1,29 @@
+fragment ProductInfo on Product {
+  id
+  name
+  description
+  price
+  createdAt
+  updatedAt
+}
+
+query Products {
+  products {
+    id
+    name
+    description
+    price
+    createdAt
+    updatedAt
+  }
+}
+
+mutation CreateProduct($input: CreateProductInput!) {
+  createProduct(input: $input) {
+    ...ProductInfo
+  }
+}
+
+mutation DeleteProduct($productId: Int!) {
+  deleteProduct(productId: $productId)
+}
